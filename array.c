@@ -17,7 +17,7 @@
 
 // Add global variables here, as needed.
 uint32_t array1[] = {1,2,3,4,5,6,7,8,9,10};
-uint32_t array2[];
+uint32_t array2[10];
 uint32_t l = 15;
 uint32_t array2d[15][15];
 
@@ -28,9 +28,14 @@ int main(void) /* Main Function */
     // We always call the "SysInit()" first to set up the microcontroller
     // for how we are going to use it.
     SysInit();
+    uint8_t i,j;        // Loop count variable
+    for(i=0;i<10;i++){
+        array2[i] = rand()%21; 
+    }
+    for(i=0;i<10;i++){ // Loop through the indices of the array
+        printf("Element %u is:\t%u\r\n",i,array2[i]);
+    }
 
-    // Place initialization code (or run-once) code here
-    uint8_t i,j;        // Two loop variables
     for(i=0;i<l;i++){  // Outer loop
         for(j=0;j<l;j++){  // Inner loop
             array2d[i][j] = rand()%21;// In here we can use i and j to loop through elements,
